@@ -40,7 +40,3 @@ def view_tasks():
         else:
             symbol = "X"
         print(f"{task["id"]}.{task["text"]} [{symbol}]")
-
-
-add_task()
-view_tasks()
