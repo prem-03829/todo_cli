@@ -1,4 +1,4 @@
-import json
+import json, sys
 
 def load_tasks():
     try:
@@ -64,3 +64,28 @@ def mark_done():
             return
     print("Task not found")
     return 
+
+while True:
+    print("----MENU----\n")
+    print("1.Add\n")
+    print("2.View\n")
+    print("3.Delete\n")
+    print("4.Mark Done\n")
+    print("5.Exit\n")
+    x = input("Enter your choice: ")
+    if x.isdigit():
+        x = int(x)
+        if x == 1:
+            add_task()
+        elif x == 2:
+            view_tasks()
+        elif x == 3:
+            del_task()
+        elif x == 4:
+            mark_done()
+        elif x == 5:
+            sys.exit(0)
+        else:
+            print("Invalid Choice\n")
+    else:
+        print("Invalid Choice\n")
