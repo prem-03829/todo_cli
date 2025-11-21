@@ -41,6 +41,26 @@ def view_tasks():
             symbol = "X"
         print(f"{task["id"]}.{task["text"]} [{symbol}]")
 
+def del_task():
+    del_id = int(input("Enter the task ID to delete: "))
+    tasks = load_tasks()
+    for task in tasks:
+        if task["id"] == del_id:
+            tasks.remove(task)
+            save_tasks(tasks)
+            print("Tasks deleted!")
+            return 
+    print("Task not found")
+    return 
 
-add_task()
-view_tasks()
+def mark_done():
+    done_id = int(input("Enter the task ID to mark as Completed: "))
+    tasks = load_tasks()
+    for task in tasks:
+        if task["id"] == done_id:
+            task["completed"] = True
+            save_tasks(tasks)
+            print("Task marked as done!")
+            return
+    print("Task not found")
+    return 

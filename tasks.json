@@ -3,10 +3,5 @@
         "id": 1,
         "text": "Buy Milk",
         "completed": false
-    },
-    {
-        "id": 2,
-        "text": "Study FOr exams",
-        "completed": false
     }
 ]
