@@ -39,10 +39,14 @@ def view_tasks():
             symbol = "Y"
         else:
             symbol = "X"
-        print(f"{task["id"]}.{task["text"]} [{symbol}]")
+        print(f"{task['id']}.{task['text']} [{symbol}]")
 
 def del_task():
-    del_id = int(input("Enter the task ID to delete: "))
+    try:
+        del_id = int(input("Enter the task ID to delete: "))
+    except:
+        print("Invalid ID!")
+        return 
     tasks = load_tasks()
     for task in tasks:
         if task["id"] == del_id:
@@ -54,20 +58,31 @@ def del_task():
     return 
 
 def update_task():
-    up_id = int(input("Enter the task ID to update: "))
+    try:
+        up_id = int(input("Enter the task ID to update: "))
+    except:
+        print("Invalid ID!")
+        return 
     tasks = load_tasks()
     for task in tasks:
         if task["id"] == up_id:
             text = input("Enter updated task: ")
+            if text.strip() == "":
+                print("Invalid tasks")
+                return 
             task["text"] = text
             save_tasks(tasks)
-            print("Task updated sucessfully!")
+            print("Task updated successfully!")
             return
     print("Task not found")
     return
 
 def mark_done():
-    done_id = int(input("Enter the task ID to mark as Completed: "))
+    try:
+        done_id = int(input("Enter the task ID to mark as Completed: "))
+    except:
+        print("Invalid ID!")
+        return 
     tasks = load_tasks()
     for task in tasks:
         if task["id"] == done_id:
@@ -78,31 +93,32 @@ def mark_done():
     print("Task not found")
     return 
 
-while True:
-    print("----MENU----\n")
-    print("1.Add\n")
-    print("2.View\n")
-    print("3.Delete\n")
-    print("4.Update\n")
-    print("5.Mark Done\n")
-    print("6.Exit\n")
-    x = input("Enter your choice: ")
-    if x.isdigit():
-        x = int(x)
-        if x == 1:
-            add_task()
-        elif x == 2:
-            view_tasks()
-        elif x == 3:
-            del_task()
-        elif x == 4:
-            update_task()
-        elif x == 5:
-            mark_done()
-        elif x == 6:
-            sys.exit(0)
+if __name__ == "__main__":
+    while True: 
+        print("----MENU----\n")
+        print("1.Add\n")
+        print("2.View\n")
+        print("3.Delete\n")
+        print("4.Update\n")
+        print("5.Mark Done\n")
+        print("6.Exit\n")
+        x = input("Enter your choice: ")
+        if x.isdigit():
+            x = int(x)
+            if x == 1:
+                add_task()
+            elif x == 2:
+                view_tasks()
+            elif x == 3:
+                del_task()
+            elif x == 4:
+                update_task()
+            elif x == 5:
+                mark_done()
+            elif x == 6:
+                sys.exit(0)
+            else:
+                print("Invalid Choice\n")
         else:
             print("Invalid Choice\n")
-    else:
-        print("Invalid Choice\n")
-    print("\n\n")
+        print("\n")
