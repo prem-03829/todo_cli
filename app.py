@@ -53,6 +53,19 @@ def del_task():
     print("Task not found")
     return 
 
+def update_task():
+    up_id = int(input("Enter the task ID to update: "))
+    tasks = load_tasks()
+    for task in tasks:
+        if task["id"] == up_id:
+            text = input("Enter updated task: ")
+            task["text"] = text
+            save_tasks(tasks)
+            print("Task updated sucessfully!")
+            return
+    print("Task not found")
+    return
+
 def mark_done():
     done_id = int(input("Enter the task ID to mark as Completed: "))
     tasks = load_tasks()
@@ -70,8 +83,9 @@ while True:
     print("1.Add\n")
     print("2.View\n")
     print("3.Delete\n")
-    print("4.Mark Done\n")
-    print("5.Exit\n")
+    print("4.Update\n")
+    print("5.Mark Done\n")
+    print("6.Exit\n")
     x = input("Enter your choice: ")
     if x.isdigit():
         x = int(x)
@@ -82,10 +96,13 @@ while True:
         elif x == 3:
             del_task()
         elif x == 4:
-            mark_done()
+            update_task()
         elif x == 5:
+            mark_done()
+        elif x == 6:
             sys.exit(0)
         else:
             print("Invalid Choice\n")
     else:
         print("Invalid Choice\n")
+    print("\n\n")
