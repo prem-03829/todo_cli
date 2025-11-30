@@ -1,4 +1,5 @@
 import json, sys
+from colorama import Fore, Style
 
 def load_tasks():
     try:
@@ -36,10 +37,11 @@ def view_tasks():
         return 
     for task in tasks:
         if task["completed"]:
-            symbol = "Y"
+            symbol = "\u2714"
+            print(Fore.GREEN + f"{task['id']}.{task['text']} [{symbol}]" + Style.RESET_ALL)
         else:
             symbol = "X"
-        print(f"{task['id']}.{task['text']} [{symbol}]")
+            print(Fore.RED + f"{task['id']}.{task['text']} [{symbol}]" + Style.RESET_ALL)
 
 def del_task():
     try:
