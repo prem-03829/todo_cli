@@ -1,2 +1,16 @@
+# Virtual environment
+venv/
+
+# Backup files
 *~
+*.swp
+*.tmp
+*.bak
 *.un~
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
