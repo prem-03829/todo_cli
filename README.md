@@ -1,118 +1,76 @@
-# To-Do List App (Python CLI)
+# To-Do CLI
 
-A simple command-line To‑Do List app built with Python. It lets you add, view, delete, and mark tasks as completed. Your tasks are saved in a `tasks.json` file so they persist between runs.
+A simple, persistent command-line task manager built with Python. It allows you to manage your daily tasks directly from the terminal, using a local JSON file to save your progress.
 
----
+## Features
 
-## 📌 Features
+* **Add Tasks:** Quickly add new items to your list.
+* **View Tasks:** See all your tasks with color-coded status (Red for pending, Green for completed).
+* **Update & Delete:** Modify existing task text or remove tasks by ID.
+* **Mark Done:** Toggle task status to completed.
+* **Persistent Storage:** Automatically saves all data to `tasks.json`, so you don't lose your list when you close the program.
 
-* Add new tasks
-* View all tasks with completion status
-* Delete tasks by ID
-* Mark tasks as completed
-* Persistent storage using JSON
+## Tech Stack
 
----
+* **Python 3**
+* **Colorama:** For colored terminal output.
+* **JSON:** For local data storage.
 
-## 🚀 How to Run
+## Folder Structure
 
-1. Make sure Python is installed on your system.
-2. Place the script and an optional `tasks.json` file in the same folder.
-3. Run the script:
+```text
+To_Do_CLI/
+├── venv/                # Virtual environment
+├── app.py               # Main application logic
+├── requirements.txt     # Project dependencies
+├── tasks.json           # Data file (created automatically)
+└── README.md
+```
+## Installation
 
-```bash
-python your_script_name.py
+Clone the repository (if you haven't already):
+```
+git clone https://github.com/prem-03829/todo_cli.git
+cd todo_cli
+```
+Set up a Virtual Environment (Recommended):
+```
+# Windows
+python -m venv venv
+.\venv\Scripts\activate
+
+# Mac/Linux
+python3 -m venv venv
+source venv/bin/activate
 ```
 
----
-
-## 📂 File Structure
-
+Install Dependencies:
 ```
-project_folder/
-│── tasks.json       # Stores your tasks
-│── script.py        # The main program
+pip install -r requirements.txt
 ```
-
----
-
-## 📝 Usage
-
-When you run the script, you'll see a menu like this:
-
+## How to Run
+Run the application using Python:
 ```
-----MENU----
-1.Add
-2.View
-3.Delete
-4.Mark Done
-5.Exit
+python app.py
 ```
+## Menu Options
 
-Choose an option by typing the number.
+Once the app is running, choose an option by entering the corresponding number:
 
-### ➕ Add Task
+Add: Type your task description.
 
-Enter a task description to create a new task.
+View: Lists all tasks with their IDs and current status.
 
-### 👀 View Tasks
+Delete: Remove a task using its ID.
 
-Displays tasks in this format:
+Update: Fix a typo or change a task description.
 
-```
-1.Buy milk [X]
-2.Complete homework [Y]
-```
+Mark Done: Check off a task using its ID.
 
-`X` → Not completed
-`Y` → Completed
+Exit: Closes the application.
 
-### ❌ Delete Task
-
-Enter the task ID to delete it.
-
-### ✔ Mark as Done
-
-Enter the task ID to mark it as completed.
-
----
-
-## 🛠 How It Works
-
-### `tasks.json`
-
-Stores tasks as a list of dictionaries:
-
-```json
-[
-  {
-    "id": 1,
-    "text": "Sample task",
-    "completed": false
-  }
-]
-```
-
-### Incremental IDs
-
-IDs auto-increment based on the last task.
-
----
-
-## 📌 Notes
-
-* If `tasks.json` doesn't exist, it's created automatically.
-* Empty input for task text is ignored.
-* Invalid IDs show an error instead of crashing.
-
----
-
-## 🤝 Contributions
-
-Feel free to improve the program or add new features.
-
----
-
-## 📄 License
-
-This project is free to use and modify.
+## Known Issues / TODO
+- Add sorting options (completed first / pending first).
+- Add timestamps for tasks.
+- Add search functionality.
+- Plan to add a "Clear All" feature in the future.
